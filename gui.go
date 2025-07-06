@@ -124,11 +124,11 @@ func InstallLatestBuilds() (err error) {
 		return
 	}
 
-	err = installLatestBuilds()
-	if err != nil {
-		ShowModal("Uh Oh!", "Failed to install the latest Equicord builds from GitHub:\n"+err.Error())
-	}
-	return
+   err = installLatestBuilds()
+   if err != nil {
+	   ShowModal("Uh Oh!", "Failed to install the latest Benji's Equicord fork (Extra Plugins) build from GitHub:\n"+err.Error())
+   }
+   return
 }
 
 func handlePatch() {
@@ -432,14 +432,14 @@ func renderInstaller() g.Widget {
 		g.Separator(),
 		g.Dummy(0, 5),
 
-		g.Style().SetFontSize(20).To(
-			renderErrorCard(
-				DiscordYellow,
-				"**Github** is the only official place to get Equicord. Any other site claiming to be us is malicious.\n"+
-					"If you downloaded from any other source, you should delete / uninstall everything immediately, run a malware scan and change your Discord password.",
-				90,
-			),
-		),
+			   g.Style().SetFontSize(20).To(
+					   renderErrorCard(
+							   DiscordYellow,
+							   "**Github** is the only official place to get Benji's Equicord fork (Extra Plugins). Any other site claiming to be us is malicious.\n"+
+									   "If you downloaded from any other source, you should delete / uninstall everything immediately, run a malware scan and change your Discord password.",
+							   90,
+					   ),
+			   ),
 
 		g.Dummy(0, 5),
 
@@ -547,7 +547,7 @@ func renderInstaller() g.Widget {
 								}
 							}).
 							Size((w-40)/4, 50),
-						Tooltip("Reinstall & Update Equicord"),
+					   Tooltip("Reinstall & Update Benji's Equicord fork (Extra Plugins)"),
 					),
 				g.Style().
 					SetColor(g.StyleColorButton, DiscordRed).
@@ -555,7 +555,7 @@ func renderInstaller() g.Widget {
 						g.Button("Uninstall").
 							OnClick(handleUnpatch).
 							Size((w-40)/4, 50),
-						Tooltip("Unpatch the selected Discord Install"),
+					   Tooltip("Unpatch the selected Discord Install (removes Benji's Equicord fork)"),
 					),
 				g.Style().
 					SetColor(g.StyleColorButton, Ternary(isOpenAsar, DiscordRed, DiscordGreen)).
@@ -568,15 +568,15 @@ func renderInstaller() g.Widget {
 			),
 		),
 
-		InfoModal("#patched", "Successfully Patched", "If Discord is still open, fully close it first.\n"+
-			"Then, start it and verify Equicord installed successfully by looking for its category in Discord Settings"),
-		InfoModal("#unpatched", "Successfully Unpatched", "If Discord is still open, fully close it first. Then start it again, it should be back to stock!"),
-		InfoModal("#scuffed-install", "Hold On!", "You have a broken Discord Install.\n"+
-			"Sometimes Discord decides to install to the wrong location for some reason!\n"+
-			"You need to fix this before patching, otherwise Equicord will likely not work.\n\n"+
-			"Use the below button to jump there and delete any folder called Discord or Squirrel.\n"+
-			"If the folder is now empty, feel free to go back a step and delete that folder too.\n"+
-			"Then see if Discord still starts. If not, reinstall it"),
+			   InfoModal("#patched", "Successfully Patched", "If Discord is still open, fully close it first.\n"+
+					   "Then, start it and verify Benji's Equicord fork (Extra Plugins) installed successfully by looking for its category in Discord Settings"),
+			   InfoModal("#unpatched", "Successfully Unpatched", "If Discord is still open, fully close it first. Then start it again, it should be back to stock!"),
+			   InfoModal("#scuffed-install", "Hold On!", "You have a broken Discord Install.\n"+
+					   "Sometimes Discord decides to install to the wrong location for some reason!\n"+
+					   "You need to fix this before patching, otherwise Benji's Equicord fork (Extra Plugins) will likely not work.\n\n"+
+					   "Use the below button to jump there and delete any folder called Discord or Squirrel.\n"+
+					   "If the folder is now empty, feel free to go back a step and delete that folder too.\n"+
+					   "Then see if Discord still starts. If not, reinstall it"),
 		RawInfoModal("#openasar-confirm", "OpenAsar", "OpenAsar is an open-source alternative of Discord desktop's app.asar.\n"+
 			"Equicord is in no way affiliated with OpenAsar.\n"+
 			"You're installing OpenAsar at your own risk. If you run into issues with OpenAsar,\n"+
@@ -638,7 +638,7 @@ func loop() {
 			g.Dummy(0, 20),
 			g.Style().SetFontSize(20).To(
 				g.Row(
-					g.Label(Ternary(IsDevInstall, "Dev Install: ", "Equicord will be downloaded to: ")+EquicordDirectory),
+			   g.Label(Ternary(IsDevInstall, "Dev Install: ", "Benji's Equicord fork (Extra Plugins) will be downloaded to: ")+EquicordDirectory),
 					g.Style().
 						SetColor(g.StyleColorButton, DiscordBlue).
 						SetStyle(g.StyleVarFramePadding, 4, 4).
@@ -653,14 +653,14 @@ func loop() {
 				}, nil},
 				g.Dummy(0, 10),
 				g.Label("Equilotl Version: "+buildinfo.InstallerTag+" ("+buildinfo.InstallerGitHash+")"+Ternary(IsSelfOutdated, " - OUTDATED", "")),
-				g.Label("Local Equicord Version: "+InstalledHash),
+			   g.Label("Local Benji's Equicord fork Version: "+InstalledHash),
 				&CondWidget{
 					GithubError == nil,
 					func() g.Widget {
-						if IsDevInstall {
-							return g.Label("Not updating Equicord due to being in DevMode")
-						}
-						return g.Label("Latest Equicord Version: " + LatestHash)
+					   if IsDevInstall {
+							   return g.Label("Not updating Benji's Equicord fork due to being in DevMode")
+					   }
+					   return g.Label("Latest Benji's Equicord fork Version: " + LatestHash)
 					}, func() g.Widget {
 						return renderErrorCard(DiscordRed, "Failed to fetch Info from GitHub: "+GithubError.Error(), 40)
 					},

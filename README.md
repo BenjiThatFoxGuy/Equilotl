@@ -1,21 +1,27 @@
 # Equilotl
 
-The Equicord Installer allows you to install [Equicord, the cutest Discord Desktop client mod](https://github.com/Equicord/Equicord)
+
+
+The installer allows you to install [Benji's Equicord fork (Extra Plugins)](https://github.com/BenjiThatFoxGuy/discord-plugins-ci)
 
 ![image](https://i.imgur.com/oHN41ss.png)
 
 ## Usage
 
 Windows
-- [GUI](https://github.com/Equicord/Equilotl/releases/latest/download/Equilotl.exe) 
-- [CLI](https://github.com/Equicord/Equilotl/releases/latest/download/EquilotlCli.exe)
+- [GUI](https://github.com/BenjiThatFoxGuy/discord-plugins-ci/releases/latest/download/Equilotl.exe) 
+- [CLI](https://github.com/BenjiThatFoxGuy/discord-plugins-ci/releases/latest/download/EquilotlCli.exe)
 
 MacOS
-- [GUI](https://github.com/Equicord/Equilotl/releases/latest/download/Equilotl.MacOS.zip)
+- [GUI](https://github.com/BenjiThatFoxGuy/discord-plugins-ci/releases/latest/download/Equilotl.MacOS.zip)
 
 Linux 
-- [GUI](https://github.com/Equicord/Equilotl/releases/latest/download/Equilotl-x11)
-- [CLI](https://github.com/Equicord/Equilotl/releases/latest/download/EquilotlCli-Linux)
+- [GUI](https://github.com/BenjiThatFoxGuy/discord-plugins-ci/releases/latest/download/Equilotl-x11)
+- [CLI](https://github.com/BenjiThatFoxGuy/discord-plugins-ci/releases/latest/download/EquilotlCli-Linux)
+
+---
+
+By default, this installer will inject Benji's Equicord fork (Extra Plugins) from [this repo](https://github.com/BenjiThatFoxGuy/discord-plugins-ci/releases/tag/latest).
 ## Building from source
 
 ### Prerequisites 

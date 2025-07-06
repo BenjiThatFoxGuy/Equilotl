@@ -80,18 +80,18 @@ func InitGithubDownloader() {
 			GithubDoneChan <- GithubError == nil
 		}()
 
-		data, err := GetGithubRelease(ReleaseUrl)
-		if err != nil {
-			GithubError = err
-			return
-		}
+	   data, err := GetGithubRelease(ReleaseUrl)
+	   if err != nil {
+		   GithubError = err
+		   return
+	   }
 
-		ReleaseData = *data
+	   ReleaseData = *data
 
-		i := strings.LastIndex(data.Name, " ") + 1
-		LatestHash = data.Name[i:]
-		Log.Debug("Finished fetching GitHub Data")
-		Log.Debug("Latest hash is", LatestHash, "Local Install is", Ternary(LatestHash == InstalledHash, "up to date!", "outdated!"))
+	   i := strings.LastIndex(data.Name, " ") + 1
+	   LatestHash = data.Name[i:]
+	   Log.Debug("Finished fetching GitHub Data")
+	   Log.Debug("Latest hash is", LatestHash, "Local Install is", Ternary(LatestHash == InstalledHash, "up to date!", "outdated!"))
 	}()
 
 	// either .asar file or directory with main.js file (in DEV)
@@ -135,21 +135,21 @@ func installLatestBuilds() (retErr error) {
 		return
 	}
 
-	downloadUrl := ""
-	for _, ass := range ReleaseData.Assets {
-		if ass.Name == "desktop.asar" {
-			downloadUrl = ass.DownloadURL
-			break
-		}
-	}
+   downloadUrl := ""
+   for _, ass := range ReleaseData.Assets {
+	   if ass.Name == "desktop.asar" {
+		   downloadUrl = ass.DownloadURL
+		   break
+	   }
+   }
 
-	if downloadUrl == "" {
-		retErr = errors.New("Didn't find desktop.asar download link")
-		Log.Error(retErr)
-		return
-	}
+   if downloadUrl == "" {
+	   retErr = errors.New("Didn't find desktop.asar download link in Benji's Equicord fork (Extra Plugins)")
+	   Log.Error(retErr)
+	   return
+   }
 
-	Log.Debug("Downloading desktop.asar")
+   Log.Debug("Downloading desktop.asar from Benji's Equicord fork (Extra Plugins)")
 
 	res, err := http.Get(downloadUrl)
 	if err == nil && res.StatusCode >= 300 {
